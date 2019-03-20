@@ -5,7 +5,7 @@ os:
 - linux
 env:
   global:
-  - DOCKER_IMAGE_NAME="deploy_AWS-1"
+  - DOCKER_IMAGE_NAME="ecommerce2"
   - DOCKER_HUB_ORG="ridhorosa"
 
 

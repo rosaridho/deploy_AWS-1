@@ -7,7 +7,7 @@ git pull
 
 source ~/.profile
 echo "$DOCKERHUB_PASS" | sudo docker login --username $DOCKERHUB_USER --password-stdin
-sudo docker stop deploy_AWS-1
-sudo docker rm deploy_AWS-1
-sudo docker rmi ridhorosa/deploy_AWS-1
-sudo docker run -d --name deploy_AWS-1 -p 5002:5002 ridhorosa/deploy_AWS-1:latest
+sudo docker stop test_project
+sudo docker rm test_project
+sudo docker rmi ridhorosa/ecommerce2:production3
+sudo docker run -d --name test_project -p 5002:5002 ridhorosa/ecommerce2:production3
