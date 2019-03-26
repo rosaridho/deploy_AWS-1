@@ -2,6 +2,7 @@ import logging, sys
 from logging.handlers import RotatingFileHandler
 from blueprints import app, manager
 
+
 if __name__=='__main__':
 
     formatter = logging.Formatter("[%(asctime)s] {%(pathname)s:%(lineno)d} %(levelname)s - %(message)s")

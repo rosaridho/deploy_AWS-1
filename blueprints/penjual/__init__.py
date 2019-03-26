@@ -18,6 +18,7 @@ class Penjual_dbStructure(db.Model):
     penjual_namaLengkap = db.Column(db.String(50), unique=True)
     penjual_gender = db.Column(db.String(50))
     penjual_lokasiKota = db.Column(db.String(50))
+    penjual_avatar = db.Column(db.String(2500))
 
     # Response Field
     response_field = {
@@ -27,7 +28,8 @@ class Penjual_dbStructure(db.Model):
         'penjual_username' : fields.String,
         'penjual_namaLengkap' : fields.String,
         'penjual_gender' : fields.String,
-        'penjual_lokasiKota' : fields.String
+        'penjual_lokasiKota' : fields.String,
+        'penjual_avatar': fields.String
     }
 
     ##respon baru
@@ -38,7 +40,7 @@ class Penjual_dbStructure(db.Model):
 
     # inisiasi dengan menggunakan db
     def __init__(self, penjual_id, penjual_email, penjual_password, penjual_username, \
-        penjual_namaLengkap, penjual_gender, penjual_lokasiKota):
+        penjual_namaLengkap, penjual_gender, penjual_lokasiKota, penjual_avatar):
         self.penjual_id = penjual_id
         self.penjual_email = penjual_email
         self.penjual_password = penjual_password
@@ -46,6 +48,7 @@ class Penjual_dbStructure(db.Model):
         self.penjual_namaLengkap = penjual_namaLengkap
         self.penjual_gender = penjual_gender
         self.penjual_lokasiKota = penjual_lokasiKota
+        self.penjual_avatar = penjual_avatar
 
     def __repr__(self):
         return '<Penjual %d>' %self.penjual_username
@@ -60,7 +63,7 @@ class Penjual_Produk_dbStructure(db.Model):
     produk_nama = db.Column(db.String(50))
     produk_harga = db.Column(db.Integer)
     produk_deskripsi = db.Column(db.String(500))
-    produk_gambar = db.Column(db.String(100))
+    produk_gambar = db.Column(db.String(2500))
     produk_stok = db.Column(db.Integer)
     produk_kategori = db.Column(db.String(50))
     produk_subkategori = db.Column(db.String(50))

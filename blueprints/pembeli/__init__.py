@@ -19,6 +19,7 @@ class Pembeli_dbStructure(db.Model):
     pembeli_gender = db.Column(db.String(50))
     pembeli_lokasiKota =  db.Column(db.String(50))
     pembeli_pekerjaan = db.Column(db.String(50))
+    pembeli_avatar = db.Column(db.String(2500))
 
     # Response Field
     response_field = {
@@ -29,12 +30,13 @@ class Pembeli_dbStructure(db.Model):
         'pembeli_namaLengkap' : fields.String,
         'pembeli_gender' : fields.String,
         'pembeli_lokasiKota' : fields.String,
-        'pembeli_pekerjaan' : fields.String
+        'pembeli_pekerjaan' : fields.String,
+        'pembeli_avatar' : fields.String
     }
 
     # inisiasi dengan menggunakan db
     def __init__(self, pembeli_id, pembeli_email, pembeli_password, pembeli_username,\
-        pembeli_namaLengkap, pembeli_gender, pembeli_lokasiKota, pembeli_pekerjaan):
+        pembeli_namaLengkap, pembeli_gender, pembeli_lokasiKota, pembeli_pekerjaan, pembeli_avatar):
         self.pembeli_id = pembeli_id
         self.pembeli_email = pembeli_email
         self.pembeli_password = pembeli_password
@@ -43,6 +45,7 @@ class Pembeli_dbStructure(db.Model):
         self.pembeli_gender = pembeli_gender
         self.pembeli_lokasiKota = pembeli_lokasiKota
         self.pembeli_pekerjaan = pembeli_pekerjaan
+        self.pembeli_avatar = pembeli_avatar
 
     def __repr__(self):
         return '<Pembeli %d>' %self.pembeli_username
@@ -66,6 +69,7 @@ class TransaksiPembeli_dbStructure(db.Model):
     produk_tanggalBeli = db.Column(db.String(50))
     transaksi_status = db.Column(db.String(50))
     produk_hargaBayar = db.Column(db.Integer)
+    produk_gambar = db.Column(db.String(2500))
 
     # Response Field
     response_field = {
@@ -83,12 +87,13 @@ class TransaksiPembeli_dbStructure(db.Model):
         'produk_tanggalBeli' : fields.String,
         'transaksi_status' : fields.String,
         'produk_hargaBayar' : fields.Integer,
+        'produk_gambar' : fields.String,
     }
 
     # inisiasi dengan menggunakan db
     def __init__(self, transaksiPembeli_id, pembeli_username, produk_id, penjual_id, produk_nama, produk_harga, \
         produk_deskripsi, produk_jumlahBeli, produk_statusPromo, produk_diskon,\
-        produk_hargaDiskon, produk_tanggalBeli, transaksi_status, produk_hargaBayar):
+        produk_hargaDiskon, produk_tanggalBeli, transaksi_status, produk_hargaBayar, produk_gambar):
         self.transaksiPembeli_id = transaksiPembeli_id
         self.pembeli_username = pembeli_username
         self.produk_id = produk_id
@@ -103,6 +108,7 @@ class TransaksiPembeli_dbStructure(db.Model):
         self.produk_tanggalBeli = produk_tanggalBeli
         self.transaksi_status = transaksi_status
         self.produk_hargaBayar = produk_hargaBayar
+        self.produk_gambar = produk_gambar
 
     def __repr__(self):
         return '<TransaksiPembeli %d>' %self.transaksiPembeli_id
