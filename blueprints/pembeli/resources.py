@@ -8,7 +8,7 @@ from flask_jwt_extended import create_access_token, \
     get_jwt_identity, jwt_required, get_jwt_claims
 from ..penjual import Penjual_Produk_dbStructure
 from sqlalchemy import update, desc
-import memcache
+# import memcache
 
 bp_pembeli = Blueprint('bp_pembeli', __name__)
 api = Api(bp_pembeli)
@@ -284,8 +284,9 @@ class PembeliProdukPromo(Resource):
 
         if identity['pembeli_username'] == pembeli_username:
             if produk_id == None and produk_kategori == None:
-                client = memcache.Client([('127.0.0.1', 11211)])
-                isiMem = client.get("getAllMem")
+                # client = memcache.Client([('127.0.0.1', 11211)])
+                # isiMem = client.get("getAllMem")
+                isiMem = None
                 if isiMem == None:
                     parser = reqparse.RequestParser()
                     parser.add_argument('p', type=int, location='args', default=1)
@@ -301,8 +302,8 @@ class PembeliProdukPromo(Resource):
                     
                     ############################### save to ###################################
                     # client = memcache.Client([('127.0.0.1', 11211)])
-                    sample_obj = LIST 
-                    client.set("getAllMem", sample_obj, time=15)
+                    # sample_obj = LIST 
+                    # client.set("getAllMem", sample_obj, time=15)
                     ##########################################################################
                     DICT={"Status":"OK", "Message":"Pembeli Teregister Melihat Seluruh Produk (DB):", "Produk":LIST}
                     return DICT, 200, {'Content-Type':'application/json'}
@@ -312,8 +313,9 @@ class PembeliProdukPromo(Resource):
         
                 
             elif produk_id != None and produk_kategori == None and produk_subkategori ==None:
-                client = memcache.Client([('127.0.0.1', 11211)])
-                isiMem = client.get("getByIDMem")
+                # client = memcache.Client([('127.0.0.1', 11211)])
+                # isiMem = client.get("getByIDMem")
+                isiMem = None
                 if isiMem == None:
                     qry = Penjual_Produk_dbStructure.query
                     qry = qry.filter_by(produk_id=produk_id)
@@ -321,8 +323,8 @@ class PembeliProdukPromo(Resource):
                     
                     ############################### save to ###################################
                     # client = memcache.Client([('127.0.0.1', 11211)])
-                    sample_obj = userById 
-                    client.set("getByIDMem", sample_obj, time=15)
+                    # sample_obj = userById 
+                    # client.set("getByIDMem", sample_obj, time=15)
                     ##########################################################################
 
                     DICT={"Status":"OK", "Message":"Pembeli Teregister Melihat Produk berdasarkan ID (DB):", "Produk":userById}
@@ -333,8 +335,9 @@ class PembeliProdukPromo(Resource):
 
 
             elif produk_id == None and produk_kategori != None:
-                client = memcache.Client([('127.0.0.1', 11211)])
-                isiMem = client.get("getByCategoryMem")
+                # client = memcache.Client([('127.0.0.1', 11211)])
+                # isiMem = client.get("getByCategoryMem")
+                isiMem = None
                 if isiMem == None:
                     parser = reqparse.RequestParser()
                     parser.add_argument('p', type=int, location='args', default=1)
@@ -353,8 +356,8 @@ class PembeliProdukPromo(Resource):
 
                     ############################### save to ###################################
                     # client = memcache.Client([('127.0.0.1', 11211)])
-                    sample_obj = LIST 
-                    client.set("getByCategoryMem", sample_obj, time=15)
+                    # sample_obj = LIST 
+                    # client.set("getByCategoryMem", sample_obj, time=15)
                     ##########################################################################
 
                     DICT={"Status":"OK", "Message":"Pembeli Teregister Melihat Produk berdasarkan Kategori (DB):", "Produk":LIST}
@@ -535,8 +538,9 @@ class PembeliProdukPopular(Resource):
 
         # if identity['pembeli_username'] == pembeli_username:
         if produk_kategori == None:
-            client = memcache.Client([('127.0.0.1', 11211)])
-            isiMem = client.get("getAllPopMem")
+            # client = memcache.Client([('127.0.0.1', 11211)])
+            # isiMem = client.get("getAllPopMem")
+            isiMem = None
             if isiMem == None:
                 parser = reqparse.RequestParser()
                 parser.add_argument('p', type=int, location='args', default=1)
@@ -552,8 +556,8 @@ class PembeliProdukPopular(Resource):
 
                 ############################### save to ###################################
                 # client = memcache.Client([('127.0.0.1', 11211)])
-                sample_obj = LIST 
-                client.set("getAllPopMem", sample_obj, time=15)
+                # sample_obj = LIST 
+                # client.set("getAllPopMem", sample_obj, time=15)
                 ##########################################################################
                 DICT={"Status":"OK", "Message":"Pembeli Melakukan Pencarian Produk Popular disemua produk(DB):", "Produk": LIST}
                 return DICT, 200, {'Content-Type':'application/json'}
@@ -563,8 +567,9 @@ class PembeliProdukPopular(Resource):
 
 
         elif produk_kategori != None and produk_subkategori ==None:
-            client = memcache.Client([('127.0.0.1', 11211)])
-            isiMem = client.get("getAllPopCatMem")
+            # client = memcache.Client([('127.0.0.1', 11211)])
+            # isiMem = client.get("getAllPopCatMem")
+            isiMem = None
             if isiMem == None:
                 parser = reqparse.RequestParser()
                 parser.add_argument('p', type=int, location='args', default=1)
@@ -580,8 +585,8 @@ class PembeliProdukPopular(Resource):
                     LIST.append(penjualProduk_marshal)
                 ############################### save to ###################################
                 # client = memcache.Client([('127.0.0.1', 11211)])
-                sample_obj = LIST 
-                client.set("getAllPopCatMem", sample_obj, time=15)
+                # sample_obj = LIST 
+                # client.set("getAllPopCatMem", sample_obj, time=15)
                 ##########################################################################
                 DICT={"Status":"OK", "Message":"Pembeli Melakukan Pencarian Produk Popular dikategori produk(DB):", "Produk": LIST}
                 return DICT, 200, {'Content-Type':'application/json'}
@@ -590,8 +595,9 @@ class PembeliProdukPopular(Resource):
                 return DICT, 200, {'Content-Type':'application/json'}
 
         elif produk_kategori != None and produk_subkategori !=None:
-            client = memcache.Client([('127.0.0.1', 11211)])
-            isiMem = client.get("getAllPopCatSubMem")
+            # client = memcache.Client([('127.0.0.1', 11211)])
+            # isiMem = client.get("getAllPopCatSubMem")
+            isiMem = None
             if isiMem == None:
                 parser = reqparse.RequestParser()
                 parser.add_argument('p', type=int, location='args', default=1)
@@ -610,8 +616,8 @@ class PembeliProdukPopular(Resource):
                     
                 ############################### save to ###################################
                 # client = memcache.Client([('127.0.0.1', 11211)])
-                sample_obj = LIST 
-                client.set("getAllPopCatSubMem", sample_obj, time=15)
+                # sample_obj = LIST 
+                # client.set("getAllPopCatSubMem", sample_obj, time=15)
                 ##########################################################################
                 DICT={"Status":"OK", "Message":"Pembeli Melakukan Pencarian Produk Popular dikategori & subkategori produk(DB):", "Produk": LIST}
                 return DICT, 200, {'Content-Type':'application/json'}
