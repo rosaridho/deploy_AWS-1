@@ -13,7 +13,7 @@ app=Flask(__name__)
 
 ### The following line is related to DB ###
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:@127.0.0.1:3306/db_ecommerce'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:123698@172.31.4.248:3306/db_ecommerce'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://ridhorosa:123698@172.31.4.248:3306/db_ecommerce'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 ### The following line is related to JWT ###
 app.config['JWT_SECRET_KEY'] = '1234'
