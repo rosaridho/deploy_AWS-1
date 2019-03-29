@@ -623,6 +623,9 @@ class PembeliProdukPopular(Resource):
         # else:
         #     return {'status':'WRONG CREDENTIAL!', 'message':'Anda tidak memiliki wewenang.'},401
 
+    def options(self, pembeli_username):
+        DICT={"Status":"OK", "Message":"Pembeli melakukan registrasi", "Data_Pembeli":"OK Banget"}
+        return DICT, 200, {'Content-Type':'application/json'}
 
 api.add_resource(PembeliProdukPopular, '/pembeli/produkAll/popular'\
     , '/pembeli/produkAll/popular/<string:produk_kategori>'
@@ -676,6 +679,9 @@ class PembeliProdukSearch(Resource):
         else:
             return {'status':'WRONG CREDENTIAL!', 'message':'Anda tidak memiliki wewenang.'},401
 
+    def options(self, pembeli_username):
+        DICT={"Status":"OK", "Message":"Pembeli melakukan registrasi", "Data_Pembeli":"OK Banget"}
+        return DICT, 200, {'Content-Type':'application/json'}
 
 api.add_resource(PembeliProdukSearch, '/pembeli/produkAll/search/<string:pembeli_username>'\
     , '/pembeli/produkAll/search/<string:pembeli_username>/<string:produk_kategori>')
@@ -725,7 +731,9 @@ class PembeliProdukSearchNot(Resource):
         else:
             return {'status':'URL warning', 'message':'Unrecognized URL'},401
        
-
+    def options(self, pembeli_username):
+        DICT={"Status":"OK", "Message":"Pembeli melakukan registrasi", "Data_Pembeli":"OK Banget"}
+        return DICT, 200, {'Content-Type':'application/json'}
 
 api.add_resource(PembeliProdukSearchNot, '/pembeli/produk/search'\
     , '/pembeli/produk/search/<string:produk_kategori>')
